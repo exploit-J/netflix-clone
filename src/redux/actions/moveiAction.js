@@ -1,0 +1,3 @@
+const getmovies = () => {
+  return dispatch;
+};

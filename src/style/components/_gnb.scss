@@ -1,0 +1,114 @@
+.gnb-container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 90px;
+  background-color: $black;
+
+  @include responsive(M) {
+    display: block;
+    height: 70px;
+    transition: 0.5s;
+
+    &.active {
+      height: 110px;
+    }
+  }
+
+  .gnb-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1808px;
+    height: 90px;
+    padding: 0 20px;
+    background-color: $black;
+
+    @include responsive(M) {
+      height: 70px;
+    }
+
+    .gnb-tl {
+      display: flex;
+      align-items: center;
+
+      .logo {
+        margin-right: 15px;
+
+        img {
+          width: 150px;
+
+          @include responsive(M) {
+            width: 88px;
+          }
+        }
+      }
+
+      ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-right: 20px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          .link {
+            padding: 8px;
+            color: $white;
+            text-decoration: none;
+            transition: 0.5s;
+
+            &:hover {
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+    }
+    .gnb-tr {
+      .gnb-searchform {
+        input {
+          width: 200px;
+          margin-right: 8px;
+          color: $border;
+          background-color: $white;
+          border-radius: 3px;
+          padding-left: 8px;
+        }
+
+        button {
+          transition: 0.5s;
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+}
+.searchform-m {
+  @include responsive(M) {
+    height: 35px;
+    background-color: $black;
+    input {
+      width: 200px;
+      height: 24px;
+      padding-left: 8px;
+      margin: 0 8px 15px 20px;
+      color: $border;
+      background-color: $white;
+      border-radius: 3px;
+    }
+  }
+}
+
+@keyframes searchForm {
+}
