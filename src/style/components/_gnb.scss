@@ -10,11 +10,6 @@
   @include responsive(M) {
     display: block;
     height: 70px;
-    transition: 0.5s;
-
-    &.active {
-      height: 110px;
-    }
   }
 
   .gnb-top {
@@ -96,8 +91,14 @@
 }
 .searchform-m {
   @include responsive(M) {
-    height: 35px;
+    height: 0px;
     background-color: $black;
+    transition: 0.5s;
+    &.active {
+      position: sticky;
+      top: 70px;
+      height: 35px;
+    }
     input {
       width: 200px;
       height: 24px;
@@ -108,7 +109,4 @@
       border-radius: 3px;
     }
   }
-}
-
-@keyframes searchForm {
 }

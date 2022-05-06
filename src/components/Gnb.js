@@ -11,56 +11,54 @@ const Gnb = () => {
   const [search, setSearch] = useState(false);
   const showSearch = () => setSearch(!search);
   return (
-    <div className={search ? "gnb-container active" : "gnb-container"}>
-      <div className={search ? "gnb-top active" : "gnb-top"}>
-        <div className="gnb-tl">
-          <div className="logo">
-            <img src={logo} />
+    <>
+      <div className={search ? "gnb-container active" : "gnb-container"}>
+        <div className={search ? "gnb-top active" : "gnb-top"}>
+          <div className="gnb-tl">
+            <div className="logo">
+              <img src={logo} />
+            </div>
+            <ul>
+              <li>
+                <Link className="link sm-hidden" to="/">
+                  Home
+                </Link>
+                <Link className="link sm-only" to="/">
+                  <FontAwesomeIcon icon={faHouse} />
+                </Link>
+              </li>
+              <li>
+                <Link className="link sm-hidden" to="/movies">
+                  Movies
+                </Link>
+                <Link className="link sm-only" to="/movies">
+                  <FontAwesomeIcon icon={faClapperboard} />
+                </Link>
+              </li>
+              <li>
+                <button className="sm-only" type="submit" onClick={showSearch}>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </button>
+              </li>
+            </ul>
           </div>
-          <ul>
-            <li>
-              <Link className="link sm-hidden" to="/">
-                Home
-              </Link>
-              <Link className="link sm-only" to="/">
-                <FontAwesomeIcon icon={faHouse} />
-              </Link>
-            </li>
-            <li>
-              <Link className="link sm-hidden" to="/movies">
-                Movies
-              </Link>
-              <Link className="link sm-only" to="/movies">
-                <FontAwesomeIcon icon={faClapperboard} />
-              </Link>
-            </li>
-            <li>
-              <button
-                className="sm-only"
-                type="submit"
-                onClick={() => showSearch()}
-              >
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className="gnb-tr">
-          <form className="gnb-searchform sm-hidden">
-            <input type="text" />
-            <button type="submit">검색</button>
-          </form>
+          <div className="gnb-tr">
+            <form className="gnb-searchform sm-hidden">
+              <input type="text" />
+              <button type="submit">검색</button>
+            </form>
+          </div>
         </div>
       </div>
       <form
         className={
-          search ? "searchform-m sm-only" : "searchform-m sm-only sm-hidden"
+          search ? "searchform-m sm-only active" : "searchform-m sm-only"
         }
       >
         <input type="text" />
         <button type="submit">검색</button>
       </form>
-    </div>
+    </>
   );
 };
 
