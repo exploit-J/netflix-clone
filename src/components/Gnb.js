@@ -50,14 +50,20 @@ const Gnb = () => {
           </div>
         </div>
       </div>
-      <form
+      <div
         className={
-          search ? "searchform-m sm-only active" : "searchform-m sm-only"
+          search ? "search-m-con sm-only active" : "search-m-con sm-only"
         }
       >
-        <input type="text" />
-        <button type="submit">검색</button>
-      </form>
+        <form
+          className={
+            search ? "search-m-form sm-only active" : "search-m-form sm-only"
+          }
+        >
+          <input type="text" />
+          <button type="submit">검색</button>
+        </form>
+      </div>
     </>
   );
 };

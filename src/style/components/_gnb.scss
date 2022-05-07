@@ -89,24 +89,38 @@
     }
   }
 }
-.searchform-m {
+
+.search-m-con {
   @include responsive(M) {
-    height: 0px;
+    height: 0;
     background-color: $black;
+    visibility: hidden;
     transition: 0.5s;
+
+    .search-m-form {
+      transform: translateX(-100vw);
+      transition: 0.5s;
+
+      input {
+        width: 50%;
+        min-width: 200px;
+        padding-left: 8px;
+        margin: 0 8px 15px 20px;
+        border-radius: 3px;
+        background-color: $white;
+        color: $border;
+      }
+    }
+
     &.active {
       position: sticky;
       top: 70px;
       height: 35px;
-    }
-    input {
-      width: 200px;
-      height: 24px;
-      padding-left: 8px;
-      margin: 0 8px 15px 20px;
-      color: $border;
-      background-color: $white;
-      border-radius: 3px;
+      visibility: visible;
+
+      .search-m-form {
+        transform: translateX(0);
+      }
     }
   }
 }
