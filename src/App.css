@@ -4,7 +4,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  color: #ffffff; }
+  color: #ffffff;
+  background-color: #222; }
 
 html {
   color: #ffffff; }
@@ -173,7 +174,33 @@ address {
       .search-m-con.active .search-m-form {
         transform: translateX(0); } }
 
-div {
-  color: black; }
+.banner-container {
+  width: 100%;
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center; }
+  .banner-container::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, #222, transparent); }
+  .banner-container .banner-info {
+    width: 50%;
+    margin-left: 30px;
+    background-color: transparent;
+    z-index: 1; }
+    .banner-container .banner-info h1,
+    .banner-container .banner-info p {
+      background-color: transparent; }
+
+.moviecard-container {
+  width: 250px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-size: contain; }
 
 /*# sourceMappingURL=App.css.map */
