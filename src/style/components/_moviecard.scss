@@ -1,6 +1,64 @@
 .moviecard-container {
-  width: 250px;
-  height: 100px;
+  width: auto;
+  height: 20vh;
+  margin: 0 2px;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
+  border-radius: 10px;
+  cursor: pointer;
+
+  .card-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 5%;
+    opacity: 0;
+    transition: 0.5s;
+    @include responsive(M) {
+      display: none;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .genre {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      span {
+        margin-right: 2px;
+        margin-bottom: 2px;
+        padding: 0 4px;
+        border: 1px solid $red;
+        background-color: $red;
+        border-radius: 8px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .etc {
+      font-size: 1rem;
+      span {
+        &:first-child {
+          margin-right: 12px;
+        }
+        &:last-child {
+          color: $red;
+          font-weight: 700;
+        }
+      }
+    }
+  }
 }

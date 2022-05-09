@@ -1,0 +1,11 @@
+.custom-dot-list-style {
+  button {
+    background-color: #fff;
+    width: 20px;
+    height: 1px;
+    visibility: hidden;
+    @include responsive(D) {
+      visibility: visible;
+    }
+  }
+}

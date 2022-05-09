@@ -1,2 +1,8 @@
-.home-container {
+.slide-container {
+  h1 {
+    font-size: 2rem;
+    @include responsive(M) {
+      font-size: 1.5rem;
+    }
+  }
 }

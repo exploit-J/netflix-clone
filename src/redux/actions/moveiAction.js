@@ -1,7 +1,7 @@
 import api from "../api";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-const getmovies = () => {
+const getMovies = () => {
   // thunk 추가 공부. 사용방식
   return async (dispatch) => {
     try {
@@ -16,11 +16,16 @@ const getmovies = () => {
       const upComingApi = api.get(
         `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
       );
-      let [popularMovies, topRatedMovies, upcomingMovies] = await Promise.all([
-        popularMovieApi,
-        topRatedApi,
-        upComingApi,
-      ]);
+      const genreApi = api.get(
+        `/genre/movie/list?api_key=${API_KEY}&language=en-US`
+      );
+      let [popularMovies, topRatedMovies, upcomingMovies, genreList] =
+        await Promise.all([
+          popularMovieApi,
+          topRatedApi,
+          upComingApi,
+          genreApi,
+        ]);
 
       // axios는 받은 데이터를 data필드에 넣어서 줌
       dispatch({
@@ -29,6 +34,7 @@ const getmovies = () => {
           popularMovies: popularMovies.data,
           topRatedMovies: topRatedMovies.data,
           upcomingMovies: upcomingMovies.data,
+          genreList: genreList.data.genres,
         },
       });
     } catch (error) {
@@ -37,4 +43,4 @@ const getmovies = () => {
   };
 };
 
-export const movieAction = { getmovies };
+export const movieAction = { getMovies };

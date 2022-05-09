@@ -1,21 +1,19 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Link, useNavigate } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
 const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
+    breakpoint: { max: 3000, min: 1201 },
+    items: 4,
+    slidesToSlide: 4,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1200, min: 465 },
     items: 2,
+    slidesToSlide: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -24,15 +22,27 @@ const responsive = {
 };
 
 const MovieSlide = ({ movie }) => {
-  console.log("movie", movie);
+  const navigate = useNavigate();
+  const goDetail = () => {
+    navigate("/detail");
+  };
   return (
-    <div>
-      <Carousel responsive={responsive}>
-        {movie.results.map((item, i) => (
+    <Carousel
+      className="slide"
+      responsive={responsive}
+      infinite={true}
+      autoPlaySpeed={5000}
+      autoPlay={false}
+      showDots={true}
+      dotListClass="custom-dot-list-style"
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+    >
+      {movie.results.map((item, i) => (
+        <span onClick={goDetail}>
           <MovieCard item={item} key={i} />
-        ))}
-      </Carousel>
-    </div>
+        </span>
+      ))}
+    </Carousel>
   );
 };
 

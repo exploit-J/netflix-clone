@@ -12,7 +12,7 @@ const Home = () => {
   console.log("ad", popularMovies);
 
   useEffect(() => {
-    dispatch(movieAction.getmovies());
+    dispatch(movieAction.getMovies());
   }, []);
 
   if (loading) {
@@ -20,16 +20,19 @@ const Home = () => {
   }
 
   return (
-    <div className="home-container">
-      <Banner movie={popularMovies.results[0]} />
-
-      <h1>Popular Movies</h1>
-      <MovieSlide movie={popularMovies} />
-      <h1>Top rated Movies</h1>
-      <MovieSlide movie={topRatedMovies} />
-      <h1>Upcoming Movies</h1>
-      <MovieSlide movie={upcomingMovies} />
-    </div>
+    <>
+      <div className="home-container">
+        <Banner movie={popularMovies.results[3]} />
+      </div>
+      <div className="slide-container">
+        <h1>Popular Movies</h1>
+        <MovieSlide movie={popularMovies} />
+        <h1>Top rated Movies</h1>
+        <MovieSlide movie={topRatedMovies} />
+        <h1>Upcoming Movies</h1>
+        <MovieSlide movie={upcomingMovies} />
+      </div>
+    </>
   );
 };
 
