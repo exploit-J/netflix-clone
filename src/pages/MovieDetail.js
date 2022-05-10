@@ -22,9 +22,9 @@ const MovieDetail = () => {
     console.log("vi", videoData);
   };
 
-  const videoKey =
-    videoData &&
-    videoData.results.find((item) => item.name.includes("Official")).key;
+  // const videoKey =
+  // videoData &&
+  // videoData.results.find((item) => item.name.includes("Official")).key;
 
   useEffect(() => {
     getDetail();
