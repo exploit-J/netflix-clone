@@ -1,0 +1,44 @@
+.moviedetail-container {
+  display: flex;
+  justify-content: center;
+
+  .movie-poster {
+    display: flex;
+    justify-content: end;
+    width: 30%;
+    padding: 0 20px;
+
+    img {
+      width: auto;
+      max-height: 900px;
+    }
+  }
+
+  .movie-info {
+    width: 30%;
+    padding: 0 20px;
+
+    .title {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .genre {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      span {
+        margin-right: 8px;
+        margin-bottom: 4px;
+        padding: 4px;
+        border: 1px solid $red;
+        background-color: $red;
+        border-radius: 8px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link, useNavigate } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
 const responsive = {
@@ -22,10 +21,6 @@ const responsive = {
 };
 
 const MovieSlide = ({ movie }) => {
-  const navigate = useNavigate();
-  const goDetail = () => {
-    navigate("/detail");
-  };
   return (
     <Carousel
       className="slide"
@@ -38,9 +33,7 @@ const MovieSlide = ({ movie }) => {
       removeArrowOnDeviceType={["tablet", "mobile"]}
     >
       {movie.results.map((item, i) => (
-        <span onClick={goDetail}>
-          <MovieCard item={item} key={i} />
-        </span>
+        <MovieCard item={item} key={i} />
       ))}
     </Carousel>
   );

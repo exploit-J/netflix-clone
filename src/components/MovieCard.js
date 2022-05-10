@@ -2,9 +2,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ item }) => {
   const { genreList } = useSelector((state) => state.movie);
+  const navigate = useNavigate();
+  const showDetail = () => {
+    navigate(`/movies/${item.id}`);
+  };
   return (
     <div
       className="moviecard-container"
@@ -14,6 +19,7 @@ const MovieCard = ({ item }) => {
           `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${item.backdrop_path}` +
           ")",
       }}
+      onClick={showDetail}
     >
       <div className="card-overlay">
         <h1 className="title">{item.title}</h1>
