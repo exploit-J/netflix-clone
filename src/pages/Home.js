@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <>
       <div className="home-container">
-        <Banner movie={popularMovies.results[3]} />
+        <Banner movie={popularMovies && popularMovies.results[3]} />
       </div>
       <div className="slide-container">
         <h1>Popular Movies</h1>
