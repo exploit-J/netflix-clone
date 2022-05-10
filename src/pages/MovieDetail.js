@@ -12,12 +12,14 @@ const MovieDetail = () => {
     let response = await fetch(url);
     let detailData = await response.json();
     setDetailData(detailData);
+    console.log("de", detailData);
   };
   const video = async () => {
     let url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
     let response = await fetch(url);
     let videoData = await response.json();
     setVideoData(videoData);
+    console.log("vi", videoData);
   };
 
   const videoKey =
@@ -68,12 +70,13 @@ const MovieDetail = () => {
             <span>런닝타임</span> : {detailData.runtime}분
           </p>
 
-          <a
+          {/* <a
             href={`https://www.youtube.com/watch?v=${videoKey}`}
             target="_blank"
           >
             유튜브로 예고편 보기
-          </a>
+          </a> */}
+          {/* <button onClick={<Video />}>예고편</button> */}
         </div>
       </div>
     </div>
