@@ -18,13 +18,11 @@ const MovieDetail = () => {
     let response = await fetch(url);
     let videoData = await response.json();
     setVideoData(videoData);
-    console.log("video", videoData);
   };
 
   const videoKey =
     videoData &&
     videoData.results.find((item) => item.name.includes("Official")).key;
-  console.log("videoKey", videoKey);
 
   useEffect(() => {
     getDetail();
@@ -46,7 +44,7 @@ const MovieDetail = () => {
               <span key={i}>{item.name}</span>
             ))}
         </div>
-        <div>
+        <div className="basic-info">
           <p>
             <span>평점 : </span>
             {detailData.vote_average} ({detailData.vote_count}명 참여)
@@ -55,18 +53,28 @@ const MovieDetail = () => {
             <span>인기점수 : </span>
             {detailData.popularity}
           </p>
-          <p>{detailData.adult ? "청소년관람불가" : ""}</p>
-        </div>
-        <div>
-          <p>영화요약</p>
-          <p>{detailData.overview}</p>
-        </div>
-        <p>개봉일 : {detailData.release_date}</p>
-        <p>런닝타임 : {detailData.runtime}분</p>
+          <p className="adult-auth">
+            {detailData.adult ? "청소년관람불가" : ""}
+          </p>
 
-        <a href={`https://www.youtube.com/watch?v=${videoKey}`} target="_blank">
-          유튜브로 예고편 보기
-        </a>
+          <p>
+            <span>영화요약</span> : <br />
+            {detailData.overview}
+          </p>
+          <p>
+            <span>개봉일</span> : {detailData.release_date}
+          </p>
+          <p>
+            <span>런닝타임</span> : {detailData.runtime}분
+          </p>
+
+          <a
+            href={`https://www.youtube.com/watch?v=${videoKey}`}
+            target="_blank"
+          >
+            유튜브로 예고편 보기
+          </a>
+        </div>
       </div>
     </div>
   );

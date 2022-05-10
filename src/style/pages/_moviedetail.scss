@@ -1,6 +1,12 @@
 .moviedetail-container {
   display: flex;
   justify-content: center;
+  @include responsive(M) {
+    display: block;
+  }
+  @include responsive(T) {
+    display: block;
+  }
 
   .movie-poster {
     display: flex;
@@ -12,15 +18,39 @@
       width: auto;
       max-height: 900px;
     }
+    @include responsive(M) {
+      justify-content: center;
+      width: 100%;
+      padding: 2% 5%;
+      margin-bottom: 15px;
+      img {
+        width: 100%;
+      }
+    }
+    @include responsive(T) {
+      justify-content: center;
+      width: 100%;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
   }
 
   .movie-info {
     width: 30%;
     padding: 0 20px;
-
+    @include responsive(M) {
+      width: 100%;
+    }
+    @include responsive(T) {
+      width: 100%;
+    }
     .title {
       font-weight: 700;
       margin-bottom: 20px;
+      @include responsive(M) {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
     }
 
     .genre {
@@ -38,6 +68,26 @@
         &:last-child {
           margin-right: 0;
         }
+      }
+      @include responsive(M) {
+        margin-bottom: 10px;
+        span {
+          font-size: 0.9rem;
+          padding: 0 4px;
+        }
+      }
+    }
+
+    .basic-info {
+      margin-bottom: 25px;
+      span {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .adult-auth {
+        color: $red;
+        font-weight: 700;
+        font-size: 1.2rem;
       }
     }
   }

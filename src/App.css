@@ -282,6 +282,12 @@ address {
 .moviedetail-container {
   display: flex;
   justify-content: center; }
+  @media screen and (max-width: 767px) {
+    .moviedetail-container {
+      display: block; } }
+  @media screen and (min-width: 768px) {
+    .moviedetail-container {
+      display: block; } }
   .moviedetail-container .movie-poster {
     display: flex;
     justify-content: end;
@@ -290,12 +296,36 @@ address {
     .moviedetail-container .movie-poster img {
       width: auto;
       max-height: 900px; }
+    @media screen and (max-width: 767px) {
+      .moviedetail-container .movie-poster {
+        justify-content: center;
+        width: 100%;
+        padding: 2% 5%;
+        margin-bottom: 15px; }
+        .moviedetail-container .movie-poster img {
+          width: 100%; } }
+    @media screen and (min-width: 768px) {
+      .moviedetail-container .movie-poster {
+        justify-content: center;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 15px; } }
   .moviedetail-container .movie-info {
     width: 30%;
     padding: 0 20px; }
+    @media screen and (max-width: 767px) {
+      .moviedetail-container .movie-info {
+        width: 100%; } }
+    @media screen and (min-width: 768px) {
+      .moviedetail-container .movie-info {
+        width: 100%; } }
     .moviedetail-container .movie-info .title {
       font-weight: 700;
       margin-bottom: 20px; }
+      @media screen and (max-width: 767px) {
+        .moviedetail-container .movie-info .title {
+          font-size: 1.3rem;
+          margin-bottom: 10px; } }
     .moviedetail-container .movie-info .genre {
       display: flex;
       flex-wrap: wrap;
@@ -309,5 +339,20 @@ address {
         border-radius: 8px; }
         .moviedetail-container .movie-info .genre span:last-child {
           margin-right: 0; }
+      @media screen and (max-width: 767px) {
+        .moviedetail-container .movie-info .genre {
+          margin-bottom: 10px; }
+          .moviedetail-container .movie-info .genre span {
+            font-size: 0.9rem;
+            padding: 0 4px; } }
+    .moviedetail-container .movie-info .basic-info {
+      margin-bottom: 25px; }
+      .moviedetail-container .movie-info .basic-info span {
+        font-size: 1.2rem;
+        font-weight: 700; }
+      .moviedetail-container .movie-info .basic-info .adult-auth {
+        color: #e50914;
+        font-weight: 700;
+        font-size: 1.2rem; }
 
 /*# sourceMappingURL=App.css.map */
