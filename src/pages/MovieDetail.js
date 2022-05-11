@@ -26,14 +26,8 @@ const MovieDetail = () => {
   }, []);
 
   // console.log("detailInfo", detailInfo);
-  // console.log("videoKey", videoKey);
+  console.log("videoKey", videoKey);
   // console.log("reviewData", reviewData);
-
-  // const videoKey =
-  //   videoData &&
-  //   videoData.results.find((item) => item.name.includes("Official")).key;
-
-  const setVideoKey = videoKey && videoKey.results[0].key;
 
   if (loading) {
     return (
@@ -46,11 +40,7 @@ const MovieDetail = () => {
   return (
     <>
       {modal && (
-        <MovieModal
-          modal={modal}
-          setModal={setModal}
-          setVideoKey={setVideoKey}
-        />
+        <MovieModal modal={modal} setModal={setModal} videoKey={videoKey} />
       )}
       <div className="moviedetail-container">
         <div className="movie-poster">
@@ -99,7 +89,7 @@ const MovieDetail = () => {
               className="ad-button"
             >
               <FontAwesomeIcon icon={faVideo} />
-              <span>홍보영상 보기</span>
+              <span>메인 예고편</span>
             </button>
           </div>
         </div>
