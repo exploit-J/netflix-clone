@@ -178,15 +178,21 @@ address {
 
 .banner-container {
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   margin-bottom: 2vh;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center; }
+  @media screen and (min-width: 1200px) {
+    .banner-container {
+      height: 70vh; } }
   @media screen and (max-width: 767px) {
     .banner-container {
       height: 30vh; } }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    .banner-container {
+      height: 40vh; } }
   .banner-container::before {
     content: "";
     position: absolute;
@@ -195,7 +201,7 @@ address {
     height: inherit;
     background: linear-gradient(to right, #222, transparent); }
   .banner-container .banner-info {
-    width: 50%;
+    width: 45%;
     margin-left: 30px;
     background-color: transparent;
     z-index: 20; }
@@ -264,6 +270,9 @@ address {
         color: #e50914;
         font-weight: 700; }
 
+.slide:last-child {
+  margin-bottom: 5vh; }
+
 .custom-dot-list-style button {
   background-color: #fff;
   width: 20px;
@@ -279,13 +288,24 @@ address {
     .slide-container h1 {
       font-size: 1.5rem; } }
 
+.spinner {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
 .moviedetail-container {
   display: flex;
   justify-content: center; }
   @media screen and (max-width: 767px) {
     .moviedetail-container {
       display: block; } }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
     .moviedetail-container {
       display: block; } }
   .moviedetail-container .movie-poster {
@@ -304,7 +324,7 @@ address {
         margin-bottom: 15px; }
         .moviedetail-container .movie-poster img {
           width: 100%; } }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
       .moviedetail-container .movie-poster {
         justify-content: center;
         width: 100%;
@@ -316,7 +336,7 @@ address {
     @media screen and (max-width: 767px) {
       .moviedetail-container .movie-info {
         width: 100%; } }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
       .moviedetail-container .movie-info {
         width: 100%; } }
     .moviedetail-container .movie-info .title {

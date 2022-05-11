@@ -14,23 +14,27 @@ const Home = () => {
     dispatch(movieAction.getMovies());
   }, []);
 
-  if (loading) {
-    return <ClipLoader color="#e50914" loading={loading} size={150} />;
-  }
-
   return (
     <>
-      <div className="home-container">
-        <Banner movie={popularMovies && popularMovies.results[3]} />
-      </div>
-      <div className="slide-container">
-        <h1>Popular Movies</h1>
-        <MovieSlide movie={popularMovies} />
-        <h1>Top rated Movies</h1>
-        <MovieSlide movie={topRatedMovies} />
-        <h1>Upcoming Movies</h1>
-        <MovieSlide movie={upcomingMovies} />
-      </div>
+      {loading ? (
+        <div className="spinner">
+          <ClipLoader color="#e50914" loading={loading} size={250} />
+        </div>
+      ) : (
+        <>
+          <div className="home-container">
+            <Banner movie={popularMovies && popularMovies.results[3]} />
+          </div>
+          <div className="slide-container">
+            <h1>Popular Movies</h1>
+            <MovieSlide movie={popularMovies} />
+            <h1>Top rated Movies</h1>
+            <MovieSlide movie={topRatedMovies} />
+            <h1>Upcoming Movies</h1>
+            <MovieSlide movie={upcomingMovies} />
+          </div>
+        </>
+      )}
     </>
   );
 };

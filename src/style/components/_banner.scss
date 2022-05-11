@@ -1,16 +1,20 @@
 .banner-container {
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   margin-bottom: 2vh;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
-
+  @include responsive(D) {
+    height: 70vh;
+  }
   @include responsive(M) {
     height: 30vh;
   }
-
+  @include responsive(T) {
+    height: 40vh;
+  }
   &::before {
     content: "";
     position: absolute;
@@ -21,7 +25,7 @@
   }
 
   .banner-info {
-    width: 50%;
+    width: 45%;
     margin-left: 30px;
     background-color: transparent;
     z-index: $overlay-level;

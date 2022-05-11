@@ -1,3 +1,9 @@
+.slide {
+  &:last-child {
+    margin-bottom: 5vh;
+  }
+}
+
 .custom-dot-list-style {
   button {
     background-color: #fff;

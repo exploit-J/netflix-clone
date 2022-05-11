@@ -26,6 +26,7 @@ const getMovies = () => {
           upComingApi,
           genreApi,
         ]);
+      console.log("popularMovies", genreList);
 
       // axios는 받은 데이터를 data필드에 넣어서 줌
       dispatch({
