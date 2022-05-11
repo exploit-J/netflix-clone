@@ -9,6 +9,9 @@ const Home = () => {
   const dispatch = useDispatch();
   const { popularMovies, topRatedMovies, upcomingMovies, loading } =
     useSelector((state) => state.movie);
+  console.log("popularMovies", popularMovies);
+  console.log("topRatedMovies", topRatedMovies);
+  console.log("upcomingMovies", upcomingMovies);
 
   useEffect(() => {
     dispatch(movieAction.getMovies());

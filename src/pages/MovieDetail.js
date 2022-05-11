@@ -4,42 +4,36 @@ import ClipLoader from "react-spinners/ClipLoader";
 import MovieModal from "../components/MovieModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+import { detailAction } from "../redux/actions/detailAction";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = () => {
   let { id } = useParams();
-  const [detailData, setDetailData] = useState("");
-  const [videoData, setVideoData] = useState("");
-  const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
+  const dispatch = useDispatch();
 
+  const { detailInfo, videoKey, reviewData, loading } = useSelector(
+    (state) => state.detail
+  );
   const modalToggle = () => {
     setModal(!modal);
   };
 
-  const getDetail = async () => {
-    let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
-    let response = await fetch(url);
-    let detailData = await response.json();
-    setDetailData(detailData);
+  useEffect(() => {
+    dispatch(detailAction.getDetail(id));
+  }, []);
 
-    let url1 = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`;
-    let response1 = await fetch(url1);
-    let videoData = await response1.json();
-    setVideoData(videoData);
-    setLoading(false);
-  };
+  // console.log("detailInfo", detailInfo);
+  // console.log("videoKey", videoKey);
+  // console.log("reviewData", reviewData);
 
   // const videoKey =
   //   videoData &&
   //   videoData.results.find((item) => item.name.includes("Official")).key;
 
-  const videokey = videoData && videoData.results[0].key;
-
-  useEffect(() => {
-    getDetail();
-  }, []);
+  const setVideoKey = videoKey && videoKey.results[0].key;
 
   if (loading) {
     return (
@@ -52,44 +46,48 @@ const MovieDetail = () => {
   return (
     <>
       {modal && (
-        <MovieModal modal={modal} setModal={setModal} videokey={videokey} />
+        <MovieModal
+          modal={modal}
+          setModal={setModal}
+          setVideoKey={setVideoKey}
+        />
       )}
       <div className="moviedetail-container">
         <div className="movie-poster">
           <img
-            src={`https://www.themoviedb.org/t/p/w600_and_h900_multi_faces/${detailData.poster_path}`}
+            src={`https://www.themoviedb.org/t/p/w600_and_h900_multi_faces/${detailInfo.poster_path}`}
           />
         </div>
         <div className="movie-info">
-          <h1 className="title">{detailData.title}</h1>
+          <h1 className="title">{detailInfo.title}</h1>
           <div className="genre">
-            {detailData &&
-              detailData.genres.map((item, i) => (
+            {detailInfo &&
+              detailInfo.genres.map((item, i) => (
                 <span key={i}>{item.name}</span>
               ))}
           </div>
           <div className="basic-info">
             <p>
               <span>평점 : </span>
-              {detailData.vote_average} ({detailData.vote_count}명 참여)
+              {detailInfo.vote_average} ({detailInfo.vote_count}명 참여)
             </p>
             <p>
               <span>인기점수 : </span>
-              {detailData.popularity}
+              {detailInfo.popularity}
             </p>
             <p className="adult-auth">
-              {detailData.adult ? "청소년관람불가" : ""}
+              {detailInfo.adult ? "청소년관람불가" : ""}
             </p>
 
             <p>
               <span>영화요약</span> : <br />
-              {detailData.overview}
+              {detailInfo.overview}
             </p>
             <p>
-              <span>개봉일</span> : {detailData.release_date}
+              <span>개봉일</span> : {detailInfo.release_date}
             </p>
             <p>
-              <span>런타임</span> : {detailData.runtime}분
+              <span>런타임</span> : {detailInfo.runtime}분
             </p>
             <button
               onClick={() => {
