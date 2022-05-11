@@ -4,7 +4,10 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const MovieModal = ({ modal, setModal, videokey }) => {
   return (
-    <div className={modal ? "modal-background open" : "modal-background close"}>
+    <div
+      className={modal ? "modal-background open" : "modal-background close"}
+      onClick={() => setModal(false)}
+    >
       <div className="modal-container">
         <div className="controller">
           <button onClick={() => setModal(false)}>

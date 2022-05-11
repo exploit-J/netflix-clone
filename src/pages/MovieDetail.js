@@ -12,6 +12,11 @@ const MovieDetail = () => {
   const [detailData, setDetailData] = useState("");
   const [videoData, setVideoData] = useState("");
   const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState(false);
+
+  const modalToggle = () => {
+    setModal(!modal);
+  };
 
   const getDetail = async () => {
     let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
@@ -35,10 +40,6 @@ const MovieDetail = () => {
   useEffect(() => {
     getDetail();
   }, []);
-  const [modal, setModal] = useState(false);
-  const modalToggle = () => {
-    setModal(!modal);
-  };
 
   if (loading) {
     return (
@@ -90,7 +91,15 @@ const MovieDetail = () => {
             <p>
               <span>런타임</span> : {detailData.runtime}분
             </p>
-            <button onClick={modalToggle} className="ad-button">
+            <button
+              onClick={() => {
+                modalToggle();
+                window.scrollTo({
+                  top: 0,
+                });
+              }}
+              className="ad-button"
+            >
               <FontAwesomeIcon icon={faVideo} />
               <span>홍보영상 보기</span>
             </button>
