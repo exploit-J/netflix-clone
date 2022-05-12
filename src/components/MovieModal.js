@@ -7,9 +7,6 @@ const MovieModal = ({ modal, setModal, videoKey }) => {
     videoKey &&
     videoKey.results.find((item) => item.type.includes("Trailer")).key;
 
-  console.log("trailer", trailer);
-  console.log("videoKey", videoKey.results);
-
   return (
     <div
       className={modal ? "modal-background open" : "modal-background close"}

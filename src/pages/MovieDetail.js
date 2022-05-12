@@ -36,7 +36,7 @@ const MovieDetail = () => {
   }, [id]);
 
   // console.log("detailInfo", detailInfo);
-  console.log("videoKey", videoKey);
+  // console.log("videoKey", videoKey);
   console.log("reviewData", reviewData);
   console.log("recommendMovie", recommendMovie);
 
@@ -53,87 +53,93 @@ const MovieDetail = () => {
       {modal && (
         <MovieModal modal={modal} setModal={setModal} videoKey={videoKey} />
       )}
-      <div className="moviedetail-container">
-        <div className="movie-poster">
-          <img
-            src={`https://www.themoviedb.org/t/p/w600_and_h900_multi_faces/${detailInfo.poster_path}`}
-          />
-        </div>
-        <div className="movie-info">
-          <h1 className="title">{detailInfo.title}</h1>
-          <div className="genre">
-            {detailInfo &&
-              detailInfo.genres.map((item, i) => (
-                <span key={i}>{item.name}</span>
-              ))}
+      <div className="detail">
+        <div className="moviedetail-container">
+          <div className="movie-poster">
+            <img
+              src={`https://www.themoviedb.org/t/p/w600_and_h900_multi_faces/${detailInfo.poster_path}`}
+            />
           </div>
-          <div className="basic-info">
-            <p>
-              <span>평점 : </span>
-              {detailInfo.vote_average} ({detailInfo.vote_count}명 참여)
-            </p>
-            <p>
-              <span>인기점수 : </span>
-              {detailInfo.popularity}
-            </p>
-            <p className="adult-auth">
-              {detailInfo.adult ? "청소년관람불가" : ""}
-            </p>
+          <div className="movie-info">
+            <h1 className="title">{detailInfo.title}</h1>
+            <div className="genre">
+              {detailInfo &&
+                detailInfo.genres.map((item, i) => (
+                  <span key={i}>{item.name}</span>
+                ))}
+            </div>
+            <div className="basic-info">
+              <p>
+                <span>평점 : </span>
+                {detailInfo.vote_average} ({detailInfo.vote_count}명 참여)
+              </p>
+              <p>
+                <span>인기점수 : </span>
+                {detailInfo.popularity}
+              </p>
+              <p className="adult-auth">
+                {detailInfo.adult ? "청소년관람불가" : ""}
+              </p>
 
-            <p>
-              <span>영화요약</span> : <br />
-              {detailInfo.overview}
-            </p>
-            <p>
-              <span>개봉일</span> : {detailInfo.release_date}
-            </p>
-            <p>
-              <span>런타임</span> : {detailInfo.runtime}분
-            </p>
+              <p>
+                <span>영화요약</span> : <br />
+                {detailInfo.overview}
+              </p>
+              <p>
+                <span>개봉일</span> : {detailInfo.release_date}
+              </p>
+              <p>
+                <span>런타임</span> : {detailInfo.runtime}분
+              </p>
+              <button
+                onClick={() => {
+                  modalToggle();
+                  window.scrollTo({
+                    top: 0,
+                  });
+                }}
+                className="ad-button"
+              >
+                <FontAwesomeIcon icon={faVideo} />
+                <span>메인 예고편</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="moviereview-container">
+          <div className="review-tab">
             <button
-              onClick={() => {
-                modalToggle();
-                window.scrollTo({
-                  top: 0,
-                });
-              }}
-              className="ad-button"
+              className={currentTab ? "active" : ""}
+              onClick={() => setCurrentTab(true)}
             >
-              <FontAwesomeIcon icon={faVideo} />
-              <span>메인 예고편</span>
+              리뷰<span>({reviewData.results.length})</span>
+            </button>
+            <button
+              className={currentTab ? "" : "active"}
+              onClick={() => setCurrentTab(false)}
+            >
+              비슷한 영화<span>({recommendMovie.results.length})</span>
             </button>
           </div>
+          {currentTab && (
+            <div className="review-section">
+              {reviewData.results.map((item, i) => (
+                <div className="review-item">
+                  <Review item={item} key={i} />
+                </div>
+              ))}
+            </div>
+          )}
+          {currentTab || (
+            <div className="related-section">
+              {recommendMovie.results.map((item, i) => (
+                <div className="related-item">
+                  <MovieCard item={item} key={i} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
-      <div className="moviereview-container">
-        <div className="review-tab">
-          <button
-            className={currentTab ? "active" : ""}
-            onClick={() => setCurrentTab(true)}
-          >
-            리뷰<span>({reviewData.results.length})</span>
-          </button>
-          <button
-            className={currentTab ? "" : "active"}
-            onClick={() => setCurrentTab(false)}
-          >
-            비슷한 영화<span>({recommendMovie.results.length})</span>
-          </button>
-        </div>
-        {currentTab && (
-          <div className="review-section">
-            {reviewData.results.map((item, i) => (
-              <Review item={item} key={i} />
-            ))}
-          </div>
-        )}
-        {currentTab || (
-          <div className="related-section">
-            {recommendMovie.results.map((item, i) => (
-              <MovieCard item={item} key={i} />
-            ))}
-          </div>
-        )}
       </div>
       <div
         className={topbutton ? "top-button active" : "top-button"}

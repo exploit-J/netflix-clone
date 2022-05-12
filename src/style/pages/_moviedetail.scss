@@ -1,131 +1,185 @@
-.moviedetail-container {
+.detail {
   display: flex;
-  justify-content: center;
-  @include responsive(M) {
-    display: block;
-  }
-  @include responsive(T) {
-    display: block;
-  }
+  flex-direction: column;
+  align-items: center;
 
-  .movie-poster {
+  .moviedetail-container {
     display: flex;
-    justify-content: end;
-    width: 30%;
-    padding: 0 20px;
-
-    img {
-      width: auto;
-      max-height: 900px;
-    }
+    justify-content: center;
+    margin-bottom: 50px;
     @include responsive(M) {
-      justify-content: center;
-      width: 100%;
-      padding: 2% 5%;
-      margin-bottom: 15px;
+      display: block;
+    }
+    @include responsive(T) {
+      display: block;
+    }
+
+    .movie-poster {
+      display: flex;
+      justify-content: end;
+      width: 30%;
+      padding: 0 20px;
+
       img {
+        width: auto;
+        max-height: 900px;
+      }
+      @include responsive(M) {
+        justify-content: center;
+        width: 100%;
+        padding: 2% 5%;
+        margin-bottom: 15px;
+        img {
+          width: 100%;
+        }
+      }
+      @include responsive(T) {
+        justify-content: center;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .movie-info {
+      width: 30%;
+      padding: 0 20px;
+      @include responsive(M) {
         width: 100%;
       }
-    }
-    @include responsive(T) {
-      justify-content: center;
-      width: 100%;
-      margin-top: 15px;
-      margin-bottom: 15px;
+      @include responsive(T) {
+        width: 100%;
+      }
+      .title {
+        font-weight: 700;
+        margin-bottom: 20px;
+        @include responsive(M) {
+          font-size: 1.3rem;
+          margin-bottom: 10px;
+        }
+      }
+
+      .genre {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        span {
+          margin-right: 8px;
+          margin-bottom: 4px;
+          padding: 4px;
+          border: 1px solid $red;
+          background-color: $red;
+          border-radius: 8px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+        @include responsive(M) {
+          margin-bottom: 10px;
+          span {
+            font-size: 0.9rem;
+            padding: 0 4px;
+          }
+        }
+      }
+
+      .basic-info {
+        margin-bottom: 25px;
+        span {
+          font-size: 1.2rem;
+          font-weight: 700;
+        }
+        .adult-auth {
+          color: $red;
+          font-weight: 700;
+          font-size: 1.2rem;
+        }
+        .ad-button {
+          font-size: 1.2rem;
+          font-weight: 700;
+          * {
+            color: $red;
+          }
+          span {
+            margin-left: 8px;
+          }
+        }
+      }
     }
   }
 
-  .movie-info {
-    width: 30%;
+  .moviereview-container {
+    width: 100%;
     padding: 0 20px;
-    @include responsive(M) {
-      width: 100%;
-    }
-    @include responsive(T) {
-      width: 100%;
-    }
-    .title {
-      font-weight: 700;
-      margin-bottom: 20px;
-      @include responsive(M) {
-        font-size: 1.3rem;
-        margin-bottom: 10px;
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // overflow: hidden;
+    word-break: break-all;
 
-    .genre {
-      display: flex;
-      flex-wrap: wrap;
+    .review-tab {
       margin-bottom: 20px;
-      span {
+
+      button {
+        width: 190px;
+        height: 40px;
         margin-right: 8px;
-        margin-bottom: 4px;
-        padding: 4px;
-        border: 1px solid $red;
-        background-color: $red;
-        border-radius: 8px;
+        border: 1px solid $footer;
+        border-radius: 4px;
+        background-color: $footer;
+        opacity: 0.3;
+        transition: 0.5s;
 
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-      @include responsive(M) {
-        margin-bottom: 10px;
-        span {
+        @include responsive(M) {
+          width: 120px;
           font-size: 0.9rem;
-          padding: 0 4px;
         }
-      }
-    }
 
-    .basic-info {
-      margin-bottom: 25px;
-      span {
-        font-size: 1.2rem;
-        font-weight: 700;
-      }
-      .adult-auth {
-        color: $red;
-        font-weight: 700;
-        font-size: 1.2rem;
-      }
-      .ad-button {
-        font-size: 1.2rem;
-        font-weight: 700;
-        * {
-          color: $red;
-        }
         span {
           margin-left: 8px;
+          background-color: $footer;
+        }
+
+        &.active {
+          opacity: 1;
         }
       }
     }
-  }
-}
+    .review-section {
+      width: 70%;
+      @include responsive(T) {
+        width: 90%;
+      }
+      @include responsive(M) {
+        width: 90%;
+      }
+    }
 
-.moviereview-container {
-  padding: 0 20px;
+    .related-section {
+      width: 70%;
+      display: flex;
+      flex-wrap: wrap;
 
-  .review-tab {
-    margin-bottom: 20px;
-
-    button {
-      width: 30%;
-      height: 40px;
-      margin-right: 8px;
-      border: 1px solid $border;
-      border-radius: 4px;
-      background-color: $border;
-      opacity: 0.3;
-      transition: 0.5s;
-
-      span {
-        margin-left: 8px;
-        background-color: $border;
+      @include responsive(M) {
+        display: block;
       }
 
-      &.active {
-        opacity: 1;
+      .related-item {
+        width: 50%;
+        margin-bottom: 15px;
+
+        @include responsive(M) {
+          width: 100%;
+          margin-bottom: 0;
+        }
+      }
+
+      @include responsive(T) {
+        width: 90%;
+      }
+      @include responsive(M) {
+        width: 90%;
       }
     }
   }
