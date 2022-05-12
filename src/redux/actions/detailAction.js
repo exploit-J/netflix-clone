@@ -19,12 +19,18 @@ const getDetail = (id) => {
       `/search/keyword?api_key=${API_KEY}&page=1&query=alien`
     );
 
-    let [detailInfo, videoKey, reviewData, searchKeyword] = await Promise.all([
-      detailInfoApi,
-      videoKeyApi,
-      reviewDataApi,
-      searchKeywordApi,
-    ]);
+    const recommendMovieApi = api.get(
+      `/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`
+    );
+
+    let [detailInfo, videoKey, reviewData, searchKeyword, recommendMovie] =
+      await Promise.all([
+        detailInfoApi,
+        videoKeyApi,
+        reviewDataApi,
+        searchKeywordApi,
+        recommendMovieApi,
+      ]);
 
     dispatch({
       type: "GET_DETAIL_SUCCESS",
@@ -33,6 +39,7 @@ const getDetail = (id) => {
         videoKey: videoKey.data,
         reviewData: reviewData.data,
         searchKeyword: searchKeyword.data,
+        recommendMovie: recommendMovie.data,
       },
     });
   };
