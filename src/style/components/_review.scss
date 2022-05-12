@@ -1,0 +1,17 @@
+.review-container {
+  margin-bottom: 35px;
+  border-bottom: 1px solid $border;
+
+  .auth {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .content {
+    line-height: 1.7rem;
+  }
+
+  .created-date {
+    font-size: 1.1rem;
+  }
+}
