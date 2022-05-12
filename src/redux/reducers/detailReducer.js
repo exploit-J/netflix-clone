@@ -5,6 +5,7 @@ let initState = {
   reviewData: {},
   searchKeyword: {},
   loading: "true",
+  recommendMovie: {},
 };
 
 function detailReducer(state = initState, action) {
@@ -17,6 +18,7 @@ function detailReducer(state = initState, action) {
         videoKey: payload.videoKey,
         reviewData: payload.reviewData,
         searchKeyword: payload.searchKeyword,
+        recommendMovie: payload.recommendMovie,
         loading: false,
       };
     case "GET_DETAIL_REQUEST":

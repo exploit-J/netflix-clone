@@ -6,28 +6,39 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { detailAction } from "../redux/actions/detailAction";
+import Review from "../components/Review";
+import MovieCard from "../components/MovieCard";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = () => {
+  const dispatch = useDispatch();
   let { id } = useParams();
   const [modal, setModal] = useState(false);
-  const dispatch = useDispatch();
+  const [currentTab, setCurrentTab] = useState(true);
+  const [topbutton, setTopbutton] = useState(false);
 
-  const { detailInfo, videoKey, reviewData, loading } = useSelector(
-    (state) => state.detail
-  );
+  const { detailInfo, videoKey, reviewData, loading, recommendMovie } =
+    useSelector((state) => state.detail);
   const modalToggle = () => {
     setModal(!modal);
+  };
+  const topButtonActive = () => {
+    window.scrollY > 800 ? setTopbutton(true) : setTopbutton(false);
   };
 
   useEffect(() => {
     dispatch(detailAction.getDetail(id));
-  }, []);
+    const watch = () => {
+      window.addEventListener("scroll", topButtonActive);
+    };
+    watch();
+  }, [id]);
 
   // console.log("detailInfo", detailInfo);
   console.log("videoKey", videoKey);
-  // console.log("reviewData", reviewData);
+  console.log("reviewData", reviewData);
+  console.log("recommendMovie", recommendMovie);
 
   if (loading) {
     return (
@@ -93,6 +104,46 @@ const MovieDetail = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="moviereview-container">
+        <div className="review-tab">
+          <button
+            className={currentTab ? "active" : ""}
+            onClick={() => setCurrentTab(true)}
+          >
+            리뷰<span>({reviewData.results.length})</span>
+          </button>
+          <button
+            className={currentTab ? "" : "active"}
+            onClick={() => setCurrentTab(false)}
+          >
+            비슷한 영화<span>({recommendMovie.results.length})</span>
+          </button>
+        </div>
+        {currentTab && (
+          <div className="review-section">
+            {reviewData.results.map((item, i) => (
+              <Review item={item} key={i} />
+            ))}
+          </div>
+        )}
+        {currentTab || (
+          <div className="related-section">
+            {recommendMovie.results.map((item, i) => (
+              <MovieCard item={item} key={i} />
+            ))}
+          </div>
+        )}
+      </div>
+      <div
+        className={topbutton ? "top-button active" : "top-button"}
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+          });
+        }}
+      >
+        top
       </div>
     </>
   );
