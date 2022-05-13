@@ -1,0 +1,123 @@
+.pagecard-container {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 8px;
+  cursor: pointer;
+  @include responsive(M) {
+    height: 100%;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(50deg, black, 80%, transparent);
+    border-radius: 8px;
+  }
+
+  .card-info {
+    position: relative;
+    padding: 15px;
+    height: 100%;
+    background-color: transparent;
+    z-index: $overlay-level;
+    * {
+      background-color: transparent;
+      margin: 0;
+    }
+
+    .card-header {
+      display: flex;
+      padding: 0;
+      border: 0;
+      .image {
+        img {
+          width: 90px;
+          margin-right: 16px;
+          margin-bottom: 20px;
+          border: 1px solid $black;
+          @include responsive(M) {
+            width: 70px;
+            margin-bottom: 15px;
+          }
+        }
+      }
+      .header {
+        .title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          @include responsive(M) {
+            font-size: 1.3rem;
+          }
+        }
+        .release {
+          height: 20%;
+        }
+      }
+    }
+    .card-genre {
+      display: flex;
+      flex-wrap: wrap;
+      width: 60%;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      @include responsive(M) {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+      }
+      @include responsive(T) {
+        width: 80%;
+      }
+      span {
+        margin-right: 2px;
+        margin-bottom: 2px;
+        padding: 0 4px;
+        border: 1px solid $red;
+        background-color: $red;
+        border-radius: 8px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    .card-overview {
+      width: 60%;
+      margin-bottom: 20px;
+      @include responsive(M) {
+        display: none;
+      }
+      p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+    .card-footer {
+      display: flex;
+      padding: 0;
+      span {
+        margin-right: 4px;
+      }
+      .vote {
+        margin-right: 15px;
+      }
+      .popular {
+        margin-right: 15px;
+      }
+      .adult {
+        color: $red;
+      }
+    }
+  }
+}

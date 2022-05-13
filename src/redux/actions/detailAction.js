@@ -15,6 +15,7 @@ const getDetail = (id) => {
     const reviewDataApi = api.get(
       `/movie/${id}/reviews?api_key=${API_KEY}&language=en-US`
     );
+
     const searchKeywordApi = api.get(
       `/search/keyword?api_key=${API_KEY}&page=1&query=alien`
     );

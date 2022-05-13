@@ -1,9 +1,9 @@
 .moviecard-container {
   width: auto;
-  // height: auto;
+  height: 220px;
   margin: 0 2px;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100%;
   background-position: center;
   cursor: pointer;
   @include responsive(M) {

@@ -12,7 +12,6 @@ api.interceptors.request.use(
   },
   function (error) {
     // Do something with request error
-    console.log("error", error);
     return Promise.reject(error);
   }
 );
@@ -25,7 +24,6 @@ api.interceptors.response.use(
     return response;
   },
   function (error) {
-    console.log("response error", error);
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);

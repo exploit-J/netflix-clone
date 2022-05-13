@@ -10,6 +10,7 @@ const MovieCard = ({ item }) => {
   const showDetail = () => {
     navigate(`/movies/${item.id}`);
   };
+
   return (
     <div
       className="moviecard-container"

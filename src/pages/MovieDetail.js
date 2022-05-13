@@ -35,11 +35,6 @@ const MovieDetail = () => {
     watch();
   }, [id]);
 
-  // console.log("detailInfo", detailInfo);
-  // console.log("videoKey", videoKey);
-  console.log("reviewData", reviewData);
-  console.log("recommendMovie", recommendMovie);
-
   if (loading) {
     return (
       <div className="spinner">
@@ -75,7 +70,7 @@ const MovieDetail = () => {
               </p>
               <p>
                 <span>인기점수 : </span>
-                {detailInfo.popularity}
+                {detailInfo.popularity.toFixed(1)}
               </p>
               <p className="adult-auth">
                 {detailInfo.adult ? "청소년관람불가" : ""}
@@ -124,7 +119,7 @@ const MovieDetail = () => {
           {currentTab && (
             <div className="review-section">
               {reviewData.results.map((item, i) => (
-                <div className="review-item">
+                <div className="review-item" key={i}>
                   <Review item={item} key={i} />
                 </div>
               ))}
@@ -133,7 +128,7 @@ const MovieDetail = () => {
           {currentTab || (
             <div className="related-section">
               {recommendMovie.results.map((item, i) => (
-                <div className="related-item">
+                <div className="related-item" key={i}>
                   <MovieCard item={item} key={i} />
                 </div>
               ))}
@@ -149,7 +144,7 @@ const MovieDetail = () => {
           });
         }}
       >
-        top
+        Top
       </div>
     </>
   );
