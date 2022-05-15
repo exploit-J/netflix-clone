@@ -299,7 +299,8 @@ address {
   position: absolute;
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  z-index: 30; }
   @media screen and (max-width: 767px) {
     .modal-background {
       left: 50%;
@@ -414,11 +415,13 @@ address {
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
+          width: fit-content;
           overflow: hidden; }
           @media screen and (max-width: 767px) {
             .pagecard-container .card-info .card-header .header .title {
               font-size: 1.3rem; } }
         .pagecard-container .card-info .card-header .header .release {
+          width: fit-content;
           height: 20%; }
     .pagecard-container .card-info .card-genre {
       display: flex;
@@ -657,7 +660,8 @@ address {
     flex-direction: column;
     align-items: flex-end;
     margin-top: 10px;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    margin-right: 20px; }
     @media screen and (max-width: 767px) {
       .movie-container .dropdown-area {
         width: 100%;
@@ -665,7 +669,7 @@ address {
         justify-content: space-around; } }
     .movie-container .dropdown-area .sort {
       position: relative;
-      margin-bottom: 50px; }
+      margin-bottom: 100px; }
       .movie-container .dropdown-area .sort button {
         width: 200px;
         height: 40px;
@@ -696,6 +700,7 @@ address {
         position: absolute;
         top: 30%;
         right: 5%;
+        cursor: pointer;
         transition: 0.5s; }
         .movie-container .dropdown-area .sort .arrow.active {
           transform: rotate(-180deg); }
@@ -715,7 +720,10 @@ address {
         width: 40%;
         padding: 10px;
         display: flex;
-        justify-content: center; }
+        justify-content: center;
+        transition: 0.5s; }
+        .movie-container .movie-card-area .card-item li:hover {
+          transform: scale(1.05); }
         @media screen and (min-width: 768px) and (max-width: 1199px) {
           .movie-container .movie-card-area .card-item li {
             width: 50%; } }

@@ -55,6 +55,7 @@
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
+          width: fit-content;
           overflow: hidden;
           // word-break: break-all;
           @include responsive(M) {
@@ -62,6 +63,7 @@
           }
         }
         .release {
+          width: fit-content;
           height: 20%;
         }
       }

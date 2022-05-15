@@ -9,9 +9,6 @@ const Movies = () => {
   const [sortFormActive, setSortFormActive] = useState(false);
   const [sortPopularActive, setSortPopularActive] = useState(false);
   const [sortVoteActive, setSortVoteActive] = useState(false);
-  const [filterFormActive, setFilterFormActive] = useState(false);
-  // const [popular, setPopular] = useState([popularMovies.results]);
-  // console.log("popular", popular);
 
   const {
     popularMovies,
@@ -68,18 +65,9 @@ const Movies = () => {
             <FontAwesomeIcon
               className={sortFormActive ? "arrow active" : "arrow"}
               icon={faCaretDown}
+              onClick={() => setSortFormActive(!sortFormActive)}
             />
           </div>
-          {/* <div className="filter">
-            <button onClick={() => setFilterActive(!filterActive)}>
-              Filter
-            </button>
-            <ul className={filterActive ? "active" : ""}>
-              <li>연도별</li>
-              <li>제목별</li>
-            </ul>
-            <FontAwesomeIcon icon={faCaretDown} />
-          </div> */}
         </div>
         <div className="movie-card-area">
           <ul className="card-item">
