@@ -1,9 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import PageCard from "../components/PageCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Movies = () => {
   const [topbutton, setTopbutton] = useState(false);
+  const [sortFormActive, setSortFormActive] = useState(false);
+  const [sortPopularActive, setSortPopularActive] = useState(false);
+  const [sortVoteActive, setSortVoteActive] = useState(false);
+  const [filterFormActive, setFilterFormActive] = useState(false);
+  // const [popular, setPopular] = useState([popularMovies.results]);
+  // console.log("popular", popular);
+
   const {
     popularMovies,
     // topRatedMovies, upcomingMovies, loading, genreList
@@ -12,6 +21,24 @@ const Movies = () => {
   //   (state) => state.detail
   // );
   // console.log("popularMovies", popularMovies);
+
+  const sortPopular = () => {
+    setSortPopularActive(!sortPopularActive);
+    if (sortPopularActive == false) {
+      popularMovies.results.sort((a, b) => b.popularity - a.popularity);
+    } else if (sortPopularActive == true) {
+      popularMovies.results.sort((a, b) => a.popularity - b.popularity);
+    }
+  };
+
+  const sortVote = () => {
+    setSortVoteActive(!sortVoteActive);
+    if (sortVoteActive == false) {
+      popularMovies.results.sort((a, b) => b.vote_average - a.vote_average);
+    } else if (sortVoteActive == true) {
+      popularMovies.results.sort((a, b) => a.vote_average - b.vote_average);
+    }
+  };
 
   const topButtonActive = () => {
     window.scrollY > 800 ? setTopbutton(true) : setTopbutton(false);
@@ -28,13 +55,31 @@ const Movies = () => {
       <div className="movie-container">
         <div className="dropdown-area">
           <div className="sort">
-            <button>Sort</button>
-            <ul>
-              <li>오름차순</li>
-              <li>내림차순</li>
+            <button
+              className={sortFormActive ? "active" : ""}
+              onClick={() => setSortFormActive(!sortFormActive)}
+            >
+              Sort
+            </button>
+            <ul className={sortFormActive ? "active" : ""}>
+              <li onClick={sortPopular}>인기순</li>
+              <li onClick={sortVote}>평점순</li>
             </ul>
+            <FontAwesomeIcon
+              className={sortFormActive ? "arrow active" : "arrow"}
+              icon={faCaretDown}
+            />
           </div>
-          <div className="filter">Filter</div>
+          {/* <div className="filter">
+            <button onClick={() => setFilterActive(!filterActive)}>
+              Filter
+            </button>
+            <ul className={filterActive ? "active" : ""}>
+              <li>연도별</li>
+              <li>제목별</li>
+            </ul>
+            <FontAwesomeIcon icon={faCaretDown} />
+          </div> */}
         </div>
         <div className="movie-card-area">
           <ul className="card-item">

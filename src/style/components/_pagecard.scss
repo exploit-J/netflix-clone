@@ -48,6 +48,7 @@
         }
       }
       .header {
+        width: 80%;
         .title {
           font-size: 1.5rem;
           font-weight: 700;
@@ -55,6 +56,7 @@
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          // word-break: break-all;
           @include responsive(M) {
             font-size: 1.3rem;
           }

@@ -406,18 +406,20 @@ address {
           .pagecard-container .card-info .card-header .image img {
             width: 70px;
             margin-bottom: 15px; } }
-      .pagecard-container .card-info .card-header .header .title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden; }
-        @media screen and (max-width: 767px) {
-          .pagecard-container .card-info .card-header .header .title {
-            font-size: 1.3rem; } }
-      .pagecard-container .card-info .card-header .header .release {
-        height: 20%; }
+      .pagecard-container .card-info .card-header .header {
+        width: 80%; }
+        .pagecard-container .card-info .card-header .header .title {
+          font-size: 1.5rem;
+          font-weight: 700;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden; }
+          @media screen and (max-width: 767px) {
+            .pagecard-container .card-info .card-header .header .title {
+              font-size: 1.3rem; } }
+        .pagecard-container .card-info .card-header .header .release {
+          height: 20%; }
     .pagecard-container .card-info .card-genre {
       display: flex;
       flex-wrap: wrap;
@@ -654,12 +656,49 @@ address {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-top: 10px;
     margin-bottom: 15px; }
     @media screen and (max-width: 767px) {
       .movie-container .dropdown-area {
         width: 100%;
         flex-direction: row;
         justify-content: space-around; } }
+    .movie-container .dropdown-area .sort {
+      position: relative;
+      margin-bottom: 50px; }
+      .movie-container .dropdown-area .sort button {
+        width: 200px;
+        height: 40px;
+        border: 1px solid #666666;
+        border-bottom: 0; }
+      .movie-container .dropdown-area .sort ul {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        width: 200px;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.5s;
+        z-index: 20;
+        border: 1px solid #666666;
+        border-top: 0; }
+        .movie-container .dropdown-area .sort ul.active {
+          max-height: 80px;
+          border: 1px solid #666666; }
+        .movie-container .dropdown-area .sort ul li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 200px;
+          height: 40px;
+          cursor: pointer; }
+      .movie-container .dropdown-area .sort .arrow {
+        position: absolute;
+        top: 30%;
+        right: 5%;
+        transition: 0.5s; }
+        .movie-container .dropdown-area .sort .arrow.active {
+          transform: rotate(-180deg); }
   .movie-container .movie-card-area {
     width: 50%; }
     @media screen and (min-width: 768px) and (max-width: 1199px) {
