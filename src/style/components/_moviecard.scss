@@ -21,10 +21,7 @@
     padding: 0 5%;
     opacity: 0;
     transition: 0.5s;
-    // M, T에서 hover 기능 적용여부
-    // @include responsive(M) {
-    //   display: none;
-    // }
+
     &:hover {
       opacity: 0.8;
     }

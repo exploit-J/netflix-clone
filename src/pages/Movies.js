@@ -56,9 +56,6 @@ const Movies = () => {
     }
   };
 
-  // const currentItems = searchResult.total_pages;
-  // console.log("currentItems", currentItems);
-
   return (
     <>
       <div className="movie-container">
