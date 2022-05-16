@@ -2,7 +2,9 @@
 ### 데모 : https://prac-netflix-clone.netlify.app
 ----------
 
-* 설명:
+* 사용기술:
+  * React(JavaScript)
+  * CSS(SCSS)
 
 
 * 주요기능:
