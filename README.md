@@ -3,8 +3,8 @@
 ----------
 
 * 사용기술:
-* * React(JavaScript)
-* * CSS(SCSS)
+  * React(JavaScript)
+  * CSS(SCSS)
 
 
 * 주요기능:
