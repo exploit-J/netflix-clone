@@ -48,7 +48,10 @@ const Movies = () => {
       let response = await fetch(url);
       let data = await response.json();
       setSearchResult(data);
-    } else {
+      if (data.results.length == 0) {
+        alert("검색 결과가 없습니다.");
+      }
+    } else if (keyword == "") {
       setSearchResult(popularMovies);
     }
   };
