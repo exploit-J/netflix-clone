@@ -3,40 +3,30 @@ import { useSelector } from "react-redux";
 import PageCard from "../components/PageCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { useSearchParams } from "react-router-dom";
 
 const Movies = () => {
   const [topbutton, setTopbutton] = useState(false);
   const [sortFormActive, setSortFormActive] = useState(false);
   const [sortPopularActive, setSortPopularActive] = useState(false);
   const [sortVoteActive, setSortVoteActive] = useState(false);
-  const [mdata, setMdata] = useState("");
-  const {
-    popularMovies,
-    keyword,
-    // topRatedMovies, upcomingMovies, loading, genreList
-  } = useSelector((state) => state.movie);
-  console.log("keyword", keyword);
-  // const { detailInfo, videoKey, reviewData, recommendMovie } = useSelector(
-  //   (state) => state.detail
-  // );
-  // console.log("popularMovies", popularMovies);
+  const [searchResult, setSearchResult] = useState("");
+  const { popularMovies, keyword } = useSelector((state) => state.movie);
 
   const sortPopular = () => {
     setSortPopularActive(!sortPopularActive);
     if (sortPopularActive === false) {
-      popularMovies.results.sort((a, b) => b.popularity - a.popularity);
+      searchResult.results.sort((a, b) => b.popularity - a.popularity);
     } else if (sortPopularActive === true) {
-      popularMovies.results.sort((a, b) => a.popularity - b.popularity);
+      searchResult.results.sort((a, b) => a.popularity - b.popularity);
     }
   };
 
   const sortVote = () => {
     setSortVoteActive(!sortVoteActive);
     if (sortVoteActive === false) {
-      popularMovies.results.sort((a, b) => b.vote_average - a.vote_average);
+      searchResult.results.sort((a, b) => b.vote_average - a.vote_average);
     } else if (sortVoteActive === true) {
-      popularMovies.results.sort((a, b) => a.vote_average - b.vote_average);
+      searchResult.results.sort((a, b) => a.vote_average - b.vote_average);
     }
   };
 
@@ -57,12 +47,15 @@ const Movies = () => {
       let url = `https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&query=${keyword}`;
       let response = await fetch(url);
       let data = await response.json();
-      setMdata(data);
+      setSearchResult(data);
     } else {
-      setMdata(popularMovies);
+      setSearchResult(popularMovies);
     }
   };
-  console.log("mdata", mdata);
+
+  // const currentItems = searchResult.total_pages;
+  // console.log("currentItems", currentItems);
+
   return (
     <>
       <div className="movie-container">
@@ -87,8 +80,8 @@ const Movies = () => {
         </div>
         <div className="movie-card-area">
           <ul className="card-item">
-            {mdata &&
-              mdata.results.map((item, i) => (
+            {searchResult &&
+              searchResult.results.map((item, i) => (
                 <li key={i}>
                   <PageCard item={item} key={i} />
                 </li>

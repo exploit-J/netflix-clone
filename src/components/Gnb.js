@@ -12,7 +12,6 @@ const Gnb = () => {
   const [search, setSearch] = useState(false);
   const showSearch = () => setSearch(!search);
   const [keyword, setKeyword] = useState("");
-  // console.log("query", query);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const keywordSearch = (e) => {
@@ -20,7 +19,6 @@ const Gnb = () => {
     dispatch({ type: "GET_KEYWORD", payload: { keyword: keyword } });
     navigate(`/movies/`);
   };
-  console.log("keyword", keyword);
   return (
     <>
       <div className={search ? "gnb-container active" : "gnb-container"}>

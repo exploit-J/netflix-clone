@@ -16,12 +16,18 @@
 
     @include responsive(M) {
       width: 100%;
-      flex-direction: row;
-      justify-content: space-around;
+      align-items: flex-start;
+      height: 5vh;
+    }
+    @include responsive(T) {
+      width: 30%;
     }
     .sort {
       position: relative;
       margin-bottom: 100px;
+      @include responsive(M) {
+        margin-left: 10px;
+      }
 
       button {
         width: 200px;
@@ -40,6 +46,9 @@
         z-index: $overlay-level;
         border: 1px solid $border;
         border-top: 0;
+        @include responsive(M) {
+          z-index: $sort-level;
+        }
 
         &.active {
           max-height: 80px;
