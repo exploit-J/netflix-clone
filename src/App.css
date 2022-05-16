@@ -140,17 +140,32 @@ address {
             transition: 0.5s; }
             .gnb-container .gnb-top .gnb-tl ul li .link:hover {
               opacity: 0.5; }
-    .gnb-container .gnb-top .gnb-tr .gnb-searchform input {
-      width: 200px;
-      margin-right: 8px;
-      color: #666666;
-      background-color: #ffffff;
-      border-radius: 3px;
-      padding-left: 8px; }
-    .gnb-container .gnb-top .gnb-tr .gnb-searchform button {
-      transition: 0.5s; }
-      .gnb-container .gnb-top .gnb-tr .gnb-searchform button:hover {
-        opacity: 0.5; }
+    .gnb-container .gnb-top .gnb-tr .gnb-searchform {
+      display: flex;
+      align-items: center;
+      height: 30px; }
+      .gnb-container .gnb-top .gnb-tr .gnb-searchform .input-area {
+        position: relative;
+        width: 200px;
+        height: 26px;
+        margin-right: 8px; }
+        .gnb-container .gnb-top .gnb-tr .gnb-searchform .input-area .key-input {
+          width: 200px;
+          height: 26px;
+          padding-right: 24px;
+          color: #666666;
+          background-color: #ffffff;
+          padding-left: 8px; }
+        .gnb-container .gnb-top .gnb-tr .gnb-searchform .input-area .clear-btn {
+          position: absolute;
+          top: -5px;
+          right: 4px;
+          padding: 5px;
+          color: #222; }
+      .gnb-container .gnb-top .gnb-tr .gnb-searchform button {
+        transition: 0.5s; }
+        .gnb-container .gnb-top .gnb-tr .gnb-searchform button:hover {
+          opacity: 0.5; }
 
 @media screen and (max-width: 767px) {
   .search-m-con {
@@ -160,16 +175,32 @@ address {
     transition: 0.5s;
     z-index: 30; }
     .search-m-con .search-m-form {
+      display: flex;
+      align-items: center;
       transform: translateX(-100vw);
       transition: 0.5s; }
-      .search-m-con .search-m-form input {
+      .search-m-con .search-m-form .input-area-sm {
+        position: relative;
         width: 50%;
         min-width: 200px;
-        padding-left: 8px;
-        margin: 0 8px 15px 20px;
-        border-radius: 3px;
-        background-color: #ffffff;
-        color: #666666; }
+        height: 30px;
+        margin-right: 8px;
+        margin-left: 20px; }
+        .search-m-con .search-m-form .input-area-sm .key-input-sm {
+          width: 95%;
+          min-width: 200px;
+          height: 100%;
+          padding-right: 24px;
+          padding-left: 5px;
+          border-radius: 3px;
+          background-color: #ffffff;
+          color: #666666; }
+        .search-m-con .search-m-form .input-area-sm .clear-btn-sm {
+          position: absolute;
+          top: -5px;
+          right: 16px;
+          padding: 5px;
+          color: #222; }
     .search-m-con.active {
       position: sticky;
       top: 70px;

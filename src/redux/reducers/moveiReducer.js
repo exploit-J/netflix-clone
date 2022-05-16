@@ -4,6 +4,7 @@ let initState = {
   upcomingMovies: {},
   loading: "true",
   genreList: [],
+  keyword: "",
 };
 
 function movieReducer(state = initState, action) {
@@ -22,6 +23,8 @@ function movieReducer(state = initState, action) {
       return { ...state, loading: true };
     case "GET_MOVIES_FAIL":
       return { ...state, loading: false };
+    case "GET_KEYWORD":
+      return { ...state, keyword: payload.keyword };
     default:
       return { ...state };
   }

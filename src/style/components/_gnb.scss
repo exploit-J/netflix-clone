@@ -70,13 +70,29 @@
     }
     .gnb-tr {
       .gnb-searchform {
-        input {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        .input-area {
+          position: relative;
           width: 200px;
+          height: 26px;
           margin-right: 8px;
-          color: $border;
-          background-color: $white;
-          border-radius: 3px;
-          padding-left: 8px;
+          .key-input {
+            width: 200px;
+            height: 26px;
+            padding-right: 24px;
+            color: $border;
+            background-color: $white;
+            padding-left: 8px;
+          }
+          .clear-btn {
+            position: absolute;
+            top: -5px;
+            right: 4px;
+            padding: 5px;
+            color: $black;
+          }
         }
 
         button {
@@ -100,17 +116,36 @@
     z-index: $gnb-level;
 
     .search-m-form {
+      display: flex;
+      align-items: center;
       transform: translateX(-100vw);
       transition: 0.5s;
-
-      input {
+      // padding-bottom: 10px;
+      .input-area-sm {
+        position: relative;
         width: 50%;
         min-width: 200px;
-        padding-left: 8px;
-        margin: 0 8px 15px 20px;
-        border-radius: 3px;
-        background-color: $white;
-        color: $border;
+        height: 30px;
+        margin-right: 8px;
+        margin-left: 20px;
+
+        .key-input-sm {
+          width: 95%;
+          min-width: 200px;
+          height: 100%;
+          padding-right: 24px;
+          padding-left: 5px;
+          border-radius: 3px;
+          background-color: $white;
+          color: $border;
+        }
+        .clear-btn-sm {
+          position: absolute;
+          top: -5px;
+          right: 16px;
+          padding: 5px;
+          color: $black;
+        }
       }
     }
 

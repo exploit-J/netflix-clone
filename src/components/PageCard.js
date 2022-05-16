@@ -18,7 +18,7 @@ const PageCard = ({ item }) => {
           `https://www.themoviedb.org/t/p/w600_and_h900_multi_faces/${item.backdrop_path}` +
           ")",
       }}
-      //   onClick={() => navigate(`/movies/${item.id}`)}
+      onClick={() => navigate(`/movies/${item.id}`)}
     >
       <div className="card-info">
         <div className="card-header">

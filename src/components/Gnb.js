@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import logo from "../logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,9 +7,20 @@ import {
   faClapperboard,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
 const Gnb = () => {
   const [search, setSearch] = useState(false);
   const showSearch = () => setSearch(!search);
+  const [keyword, setKeyword] = useState("");
+  // console.log("query", query);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const keywordSearch = (e) => {
+    e.preventDefault();
+    dispatch({ type: "GET_KEYWORD", payload: { keyword: keyword } });
+    navigate(`/movies/`);
+  };
+  console.log("keyword", keyword);
   return (
     <>
       <div className={search ? "gnb-container active" : "gnb-container"}>
@@ -43,8 +54,27 @@ const Gnb = () => {
             </ul>
           </div>
           <div className="gnb-tr">
-            <form className="gnb-searchform sm-hidden">
-              <input type="text" />
+            <form
+              className="gnb-searchform sm-hidden"
+              onSubmit={(e) => keywordSearch(e)}
+            >
+              <div className="input-area">
+                <input
+                  className="key-input"
+                  type="text"
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+                <button
+                  className="clear-btn"
+                  type="button"
+                  onClick={() => {
+                    document.querySelector(".key-input").value = "";
+                    setKeyword("");
+                  }}
+                >
+                  x
+                </button>
+              </div>
               <button type="submit">검색</button>
             </form>
           </div>
@@ -59,8 +89,25 @@ const Gnb = () => {
           className={
             search ? "search-m-form sm-only active" : "search-m-form sm-only"
           }
+          onSubmit={(e) => keywordSearch(e)}
         >
-          <input type="text" />
+          <div className="input-area-sm">
+            <input
+              className="key-input-sm"
+              type="text"
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+            <button
+              className="clear-btn-sm"
+              type="button"
+              onClick={() => {
+                document.querySelector(".key-input-sm").value = "";
+                setKeyword("");
+              }}
+            >
+              x
+            </button>
+          </div>
           <button type="submit">검색</button>
         </form>
       </div>
